@@ -55,8 +55,13 @@
             <img src="images/brigadeiro.png" alt="Brigadeiro Gourmet">
         </div>
     </div>
-    <div class="blob-shape"></div>
 </section>
+
+<div class="onda">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 C240,120 480,120 720,60 C960,0 1200,0 1440,60 L1440,120 L0,120 Z" fill="#ffb7c5"></path>
+    </svg>
+</div>
 
 <main>
     <section id="ovos" class="products">
@@ -67,7 +72,7 @@
                 <i class="fas fa-chevron-left"></i>
             </button>
             
-            <div class="grid carousel-track" id="ovos-track">
+            <div class="carousel-track" id="ovos-track">
                 <div class="card">
                     <img src="images/ovo_brigadeiro.jpg" alt="Ovo Brigadeiro">
                     <div class="price-tag">R$ 57,00</div>
@@ -110,7 +115,13 @@
         </div>
     </section>
 
-    <section id="presentes" class="products bg-alt">
+    <div class="onda invertida">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C240,120 480,120 720,60 C960,0 1200,0 1440,60 L1440,120 L0,120 Z" fill="#ffffff"></path>
+        </svg>
+    </div>
+
+    <section id="presentes" class="products">
         <h2>Kits & Presentáveis</h2>
         
         <div class="carousel-wrapper">
@@ -118,7 +129,7 @@
                 <i class="fas fa-chevron-left"></i>
             </button>
             
-            <div class="grid carousel-track" id="presentes-track">
+            <div class="carousel-track" id="presentes-track">
                 <div class="card">
                     <img src="images/dupla_ovos.jpg" alt="Dupla de Ovos">
                     <div class="price-tag">R$ 79,00</div>
@@ -161,6 +172,12 @@
         </div>
     </section>
 
+    <div class="onda">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C240,120 480,120 720,60 C960,0 1200,0 1440,60 L1440,120 L0,120 Z" fill="#ffb7c5"></path>
+        </svg>
+    </div>
+
     <section id="info" class="info-section">
         <h2>Como fazer seu pedido</h2>
         <div class="info-grid">
@@ -180,11 +197,10 @@
                 <p>Produtos acompanham embalagem e tag.</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://wa.me/5541998026260?text=Quero%20fazer%20um%20pedido." target="_blank" class="btn-cta">
-                <i class="fab fa-whatsapp"></i> FAZER MEU PEDIDO
-            </a>
-        </div>
+        
+        <a href="https://wa.me/5541998026260?text=Quero%20fazer%20um%20pedido." target="_blank" class="btn-cta">
+            <i class="fab fa-whatsapp"></i> FAZER MEU PEDIDO
+        </a>
     </section>
 </main>
 
@@ -193,21 +209,15 @@
 </footer>
 
 <script>
-    // Função do Carrossel Dinâmico
     function scrollCarousel(trackId, direction) {
         const track = document.getElementById(trackId);
-        const card = track.querySelector('.card');
-        if (card) {
-            // Calcula a largura de um card + o gap (espaço entre eles)
-            const style = window.getComputedStyle(track);
-            const gap = parseInt(style.columnGap) || 20;
-            const scrollAmount = (card.offsetWidth + gap) * direction;
-            
-            track.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
+        // Deslocamento exato: 300px do card + 20px de gap
+        const cardWidth = 320; 
+        
+        track.scrollBy({
+            left: direction * cardWidth,
+            behavior: 'smooth'
+        });
     }
     
     // Menu Mobile
@@ -223,7 +233,6 @@
         icon.classList.toggle('fa-times');
     });
 
-    // Fechar menu ao clicar nos links
     document.querySelectorAll('.nav-pill a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
