@@ -1,6 +1,6 @@
 :root {
     --bg-ice: #ffffff; 
-    --pink-pill: #ffb7c5;
+    --pink-pill: #c4e8ff; /* Azul Claro */
     --chocolate: #4e342e;
     --text-muted: #7a6a61;
     --branco: #ffffff;
@@ -43,6 +43,24 @@ header {
 .logo-wrapper { display: flex; align-items: center; gap: 10px; }
 .logo-wrapper img { height: 45px; }
 
+/* --- Estilo da Logo --- */
+.brand-name { 
+    font-family: 'Impact', sans-serif; 
+    font-weight: normal; 
+    font-size: 1.6rem; 
+    color: var(--chocolate); 
+    line-height: 1;
+    text-transform: uppercase; 
+}
+
+.brand-sub { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.6rem; 
+    color: var(--pink-pill); 
+    display: block;
+    margin-top: -5px; 
+}
+
 .nav-pill { 
     background: var(--pink-pill); 
     padding: 10px 35px; 
@@ -56,21 +74,34 @@ header {
 .nav-pill ul { display: flex; list-style: none; gap: 20px; }
 .nav-pill a { text-decoration: none; color: var(--branco); font-weight: 600; font-size: 0.8rem; white-space: nowrap; }
 
-/* --- Ondas --- */
+/* --- Ondas (Correção da Cor Rosa nos SVGs) --- */
 .onda { 
     line-height: 0; 
     width: 100%; 
     margin-top: -1px; 
     margin-bottom: -1px; 
 }
+
 .onda svg { 
     width: 100%; 
     height: 80px; 
     display: block; 
 }
+
+/* Força o preenchimento do azul em todos os caminhos dos SVGs de onda */
+.onda svg path {
+    fill: var(--pink-pill) !important;
+}
+
 .onda.invertida { 
     transform: rotate(0deg); 
-    background-color: var(--pink-pill); }
+    background-color: var(--pink-pill); 
+}
+
+/* Garante que a onda invertida que usa branco para o corte permaneça branca */
+.onda.invertida svg path {
+    fill: var(--branco) !important;
+}
 
 /* --- Hero --- */
 .hero {
@@ -92,6 +123,7 @@ header {
     margin: 0 auto;
     gap: 60px;
 }
+
 .hero-content {
     flex: 1;
     text-align: left;
@@ -107,6 +139,7 @@ header {
     line-height: 1.1;
     margin: 15px 0 25px 0;
 }
+
 .hero-description {
     max-width: 500px;
     color: var(--text-muted);
@@ -126,6 +159,7 @@ header {
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
     animation: float 4s ease-in-out infinite;
 }
+
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -137,8 +171,8 @@ section { padding: 40px 5%; text-align: center; }
 #presentes { background: var(--branco); }
 .info-section { background: var(--pink-pill); padding-bottom: 80px; }
 
-h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 40px; }
-#ovos h2, .info-section h2 { color: var(--branco); }
+h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 40px; color: var(--chocolate); }
+#ovos h2, .info-section h2 { color: var(--chocolate); }
 
 /* --- Cards --- */
 .carousel-wrapper { position: relative; max-width: 1300px; margin: 0 auto; padding: 0 40px; }
@@ -161,7 +195,7 @@ h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 4
     flex-direction: column;
     text-align: center;
     transition: transform 0.3s ease;
-    padding-bottom: 30px; /* Aumentado para dar espaço ao botão de preço */
+    padding-bottom: 30px; 
 }
 
 .card img { 
@@ -185,11 +219,11 @@ h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 4
     flex-grow: 1;
 }
 
-/* --- PREÇO ESTILO BOTÃO PINK --- */
+/* --- PREÇO ESTILO BOTÃO --- */
 .card .price-tag { 
     display: inline-block;
-    background-color: var(--pink-pill);
-    color: var(--branco);
+    background-color: var(--pink-pill); 
+    color: var(--chocolate); 
     padding: 10px 25px;
     border-radius: 50px;
     font-weight: 600;
@@ -202,7 +236,7 @@ h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 4
 
 .card .price-tag:hover {
     transform: scale(1.05);
-    filter: brightness(1.05);
+    filter: brightness(0.95);
 }
 
 .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); }
@@ -279,7 +313,7 @@ footer { padding: 40px; background: var(--branco); color: var(--chocolate); text
 
     .header-container {
         display: flex;
-        justify-content: space-between; /* Mantém logo na esquerda e ícone na direita */
+        justify-content: space-between;
         align-items: center;
         width: 100%;
     }
@@ -292,8 +326,8 @@ footer { padding: 40px; background: var(--branco); color: var(--chocolate); text
         color: var(--chocolate); 
         z-index: 3200; 
         cursor: pointer;
-        margin-left: auto; /* Garante o alinhamento total à direita */
-        padding: 5px; /* Área de toque melhorada */
+        margin-left: auto;
+        padding: 5px;
     }
     
     .hero-container { 
