@@ -45,7 +45,7 @@ header {
 
 /* --- Estilo da Logo --- */
 .brand-name { 
-    font-family: 'Impact', sans-serif; 
+    font-family: 'Anton', sans-serif; 
     font-weight: normal; 
     font-size: 1.6rem; 
     color: var(--chocolate); 
