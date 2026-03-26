@@ -305,7 +305,7 @@ h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 4
 /* --- Footer --- */
 footer { padding: 40px; color: var(--chocolate); text-align: center; font-size: 0.8rem; }
 
-/* --- Modais e Pop-ups --- */
+/* --- Modais e Pop-ups (Ajustados) --- */
 .popup-overlay, .modal {
     display: none; 
     position: fixed;
@@ -313,7 +313,7 @@ footer { padding: 40px; color: var(--chocolate); text-align: center; font-size: 
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.85); /* Fundo um pouco mais escuro para foco */
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -333,13 +333,55 @@ footer { padding: 40px; color: var(--chocolate); text-align: center; font-size: 
     animation: popupFade 0.4s ease;
 }
 
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease;
+    z-index: 10000;
+}
+
 @keyframes popupFade {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 .popup-icon { font-size: 3rem; color: var(--pink-pill); margin-bottom: 20px; }
-.close-popup { position: absolute; top: 15px; right: 20px; font-size: 25px; cursor: pointer; color: var(--text-muted); }
+
+/* Botão de fechar do Modal de Imagem (Ajustado) */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #ffffff !important; /* Força cor branca para contraste */
+    font-size: 60px; /* Tamanho maior para visibilidade */
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    line-height: 1;
+    z-index: 10001; /* Fica acima da imagem expandida */
+    display: block !important;
+}
+
+.close-modal:hover {
+    color: var(--pink-pill) !important;
+}
+
+/* Botão de fechar dos Pop-ups normais */
+.close-popup { 
+    position: absolute; 
+    top: 15px; 
+    right: 20px; 
+    font-size: 25px; 
+    cursor: pointer; 
+    color: var(--text-muted); 
+}
 
 .btn-popup {
     margin-top: 20px;
@@ -393,6 +435,15 @@ footer { padding: 40px; color: var(--chocolate); text-align: center; font-size: 
     .onda svg { height: 50px; }
     #presentes, .info-section, footer { margin-top: -1px; position: relative; z-index: 10; }
     .onda.invertida svg { margin-top: -1px; }
-    .modal-content { width: 80%; height: 80%; object-fit: contain; }
-    .close-modal { top: 20px; right: 25px; font-size: 40px; }
+    
+    .modal-content { 
+        width: 85%; 
+        height: auto; 
+    }
+    
+    .close-modal { 
+        top: 15px; 
+        right: 20px; 
+        font-size: 45px; 
+    }
 }
